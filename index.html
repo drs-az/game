@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="manifest.json">
-  <title>Circle 🔴 Touch</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Circle Game</title>
   <style>
-    /* Global body style with a gradient background */
     body {
       margin: 0;
       padding: 0;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background: linear-gradient(135deg, #f0f2f5, #d9e2ec);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       overflow: hidden;
     }
-    /* Container that wraps the game and holds a drop shadow and rounded edges */
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
     #gameContainer {
       position: relative;
       background: #fff;
@@ -26,12 +32,12 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       overflow: hidden;
     }
-    /* Canvas styling */
+
     #gameCanvas {
       display: block;
       background: #fafafa;
     }
-    /* Score overlay styling */
+
     #scoreOverlay {
       position: absolute;
       top: 10px;
@@ -43,7 +49,7 @@
       border-radius: 5px;
       pointer-events: none;
     }
-    /* Hidden encryption panel styled as a modern modal */
+
     #encryptionPanel {
       position: absolute;
       top: 50%;
@@ -58,16 +64,19 @@
       display: none;
       z-index: 10;
     }
+
     #encryptionPanel h3 {
       margin-top: 0;
       font-size: 1.5em;
       text-align: center;
       color: #333;
     }
+
     #encryptionPanel label {
       font-size: 0.9em;
       color: #555;
     }
+
     #encryptionPanel input[type="password"],
     #encryptionPanel textarea {
       width: 100%;
@@ -77,6 +86,7 @@
       border-radius: 5px;
       font-size: 1em;
     }
+
     #encryptionPanel button {
       padding: 10px 20px;
       margin: 5px;
@@ -86,10 +96,11 @@
       cursor: pointer;
       transition: background 0.3s;
     }
+
     #encryptionPanel button:hover {
       opacity: 0.9;
     }
-    /* Color-coded buttons */
+
     #encryptBtn { background-color: #4caf50; color: white; }
     #decryptBtn { background-color: #f44336; color: white; }
     #shareBtn   { background-color: #2196f3; color: white; }
@@ -97,27 +108,35 @@
   </style>
 </head>
 <body>
+  <h2>Circle 🔴 Game</h2>
+
   <div id="gameContainer">
     <canvas id="gameCanvas" width="400" height="600"></canvas>
     <div id="scoreOverlay">Score: 0</div>
+
     <div id="encryptionPanel">
       <h3>Secret Messenger</h3>
       <label for="passphrase">Passphrase:</label>
-      <input type="password" id="passphrase" placeholder="Enter passphrase">
+      <input type="password" id="passphrase" placeholder="Enter passphrase" />
+      
       <label for="message">Message / Ciphertext:</label>
       <textarea id="message" placeholder="Enter message or encrypted text"></textarea>
+
       <div style="text-align: center;">
         <button id="encryptBtn">Encrypt</button>
         <button id="decryptBtn">Decrypt</button>
       </div>
+
       <label for="result">Result:</label>
       <textarea id="result" readonly placeholder="Output will appear here"></textarea>
+
       <div style="text-align: center;">
         <button id="shareBtn">Share</button>
         <button id="closePanel">Close</button>
       </div>
     </div>
   </div>
+
   <script src="main.js"></script>
 </body>
 </html>
