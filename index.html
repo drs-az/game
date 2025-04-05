@@ -78,6 +78,7 @@
     }
 
     #encryptionPanel input[type="password"],
+    #encryptionPanel input[type="text"],
     #encryptionPanel textarea {
       width: 100%;
       padding: 10px;
@@ -105,6 +106,21 @@
     #decryptBtn { background-color: #f44336; color: white; }
     #shareBtn   { background-color: #2196f3; color: white; }
     #closePanel { background-color: #777; color: white; }
+
+    .pass-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #togglePass {
+      padding: 5px 10px;
+      font-size: 0.8em;
+      background: #ccc;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -116,9 +132,13 @@
 
     <div id="encryptionPanel">
       <h3>Secret Messenger</h3>
+
       <label for="passphrase">Passphrase:</label>
-      <input type="password" id="passphrase" placeholder="Enter passphrase" />
-      
+      <div class="pass-container">
+        <input type="password" id="passphrase" placeholder="Enter passphrase" />
+        <button id="togglePass" type="button">Show</button>
+      </div>
+
       <label for="message">Message / Ciphertext:</label>
       <textarea id="message" placeholder="Enter message or encrypted text"></textarea>
 
@@ -138,5 +158,19 @@
   </div>
 
   <script src="main.js"></script>
+  <script>
+    const passInput = document.getElementById('passphrase');
+    const toggleBtn = document.getElementById('togglePass');
+
+    toggleBtn.addEventListener('click', () => {
+      if (passInput.type === 'password') {
+        passInput.type = 'text';
+        toggleBtn.textContent = 'Hide';
+      } else {
+        passInput.type = 'password';
+        toggleBtn.textContent = 'Show';
+      }
+    });
+  </script>
 </body>
 </html>
