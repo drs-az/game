@@ -5,7 +5,6 @@ self.addEventListener('install', event => {
         './index.html',
         './main.js',
         './manifest.json'
-        // Add additional assets like CSS or icons as needed.
       ]);
     })
   );
