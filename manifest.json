@@ -1,6 +1,6 @@
 {
-  "name": "Secret Game Messenger",
-  "short_name": "SGM",
+  "name": "Circle Touch",
+  "short_name": "Circle",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#fff",
