@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <title>Secret Game Messenger</title>
+  <style>
+    body { margin: 0; padding: 0; font-family: sans-serif; }
+    #gameCanvas { display: block; background: #eee; }
+    /* The encryption panel is hidden by default */
+    #encryptionPanel {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.95);
+      border: 1px solid #ccc;
+      padding: 20px;
+      display: none;
+      z-index: 1000;
+      width: 90%;
+      max-width: 400px;
+    }
+    #encryptionPanel textarea { width: 100%; height: 60px; }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="400" height="600"></canvas>
+  <div id="encryptionPanel">
+    <h3>Secret Messenger</h3>
+    <label for="passphrase">Passphrase:</label>
+    <input type="password" id="passphrase">
+    <br><br>
+    <label for="message">Message / Ciphertext:</label>
+    <textarea id="message" placeholder="Enter message or encrypted text"></textarea>
+    <br><br>
+    <button id="encryptBtn">Encrypt</button>
+    <button id="decryptBtn">Decrypt</button>
+    <br><br>
+    <label for="result">Result:</label>
+    <textarea id="result" readonly></textarea>
+    <br><br>
+    <button id="shareBtn">Share</button>
+    <button id="closePanel">Close</button>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
