@@ -6,6 +6,7 @@ window.addEventListener('load', () => {
 
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
+  const scoreOverlay = document.getElementById('scoreOverlay');
   let score = 0;
   let targets = [];
 
@@ -16,28 +17,26 @@ window.addEventListener('load', () => {
     targets.push({x, y, radius: 15});
   }
 
-  // Draw targets and display score
+  // Draw targets
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     targets.forEach(t => {
       ctx.beginPath();
       ctx.arc(t.x, t.y, t.radius, 0, Math.PI * 2);
-      ctx.fillStyle = '#f00';
+      ctx.fillStyle = '#f44336'; // Red targets
       ctx.fill();
     });
-    ctx.fillStyle = '#000';
-    ctx.font = '20px Arial';
-    ctx.fillText('Score: ' + score, 10, 25);
   }
 
   // Game loop
   function update() {
     draw();
+    scoreOverlay.innerText = 'Score: ' + score;
     requestAnimationFrame(update);
   }
   update();
 
-  // Secret unlock mechanism: click in the top-left corner 5 times
+  // Secret unlock mechanism: tap top-left corner 5 times
   let secretClicks = 0;
   canvas.addEventListener('click', (e) => {
     const rect = canvas.getBoundingClientRect();
